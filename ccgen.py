@@ -18,6 +18,7 @@ import ccgen_util as util
 # - add more logging
 # - windows font find
 # - JSON configuration
+# - Use different fonts for title, characters etc.
 
 OSNAME = platform.system()
 CWD = os.getcwd()
@@ -51,6 +52,8 @@ DEFAULT_INTERCHAR_VSPACE = 4 # mm
 DEFAULT_GRID_IMG = "mi-grid.png"
 DEFAULT_CHARPAD = 2 # mm
 DEFAULT_BOXSPACE = 1 # mm
+DEFAULT_CHARCOLOR = (160, 160, 160)
+DEFAULT_TEXTCOLOR = (0, 0, 00)
 
 LOGFORMAT = "%(asctime)s [%(levelname)s] %(message)s"
 
@@ -151,21 +154,25 @@ class ccgen_pdf(FPDF):
     def set_pdf_font_for_characters(self):
         self.set_font(family=self.config.font_name)
         self.set_font_size(size=self.config.font_size)
+        self.set_text_color(*DEFAULT_CHARCOLOR)
 
 
     def set_pdf_font_for_title(self):
         self.set_font(family=self.config.font_name)
         self.set_font_size(size=DEFAULT_TITLEFONTSIZE)
+        self.set_text_color(*DEFAULT_TEXTCOLOR)
 
 
     def set_pdf_font_for_text(self):
         self.set_font(family=self.config.font_name)
         self.set_font_size(size=DEFAULT_TEXTFONTSIZE)
+        self.set_text_color(*DEFAULT_TEXTCOLOR)
 
 
     def set_pdf_font_for_footer(self):
         self.set_font(family=self.config.font_name)
         self.set_font_size(size=DEFAULT_FOOTERFONTSIZE)
+        self.set_text_color(*DEFAULT_TEXTCOLOR)
 
 
     def footer(self): # override
@@ -245,8 +252,8 @@ class ccgen_pdf(FPDF):
             # max_boxes_per_line = int(content_width // box_size)
             # char_boxes_per_line = int(max_boxes_per_line // 2)
 
-            # add chars to page while they fit
             self.set_pdf_font_for_characters()
+            # add chars to page while they fit
             while self.get_y() + box_size < max_y and i < len(self.config.chars):
                 while self.get_x() + box_size < max_x and i < len(self.config.chars):
                     c = self.config.chars[i]
