@@ -12,6 +12,13 @@ from fpdf import FPDF
 import ccgen_util as util
 
 
+# TODO
+# - add more grid options
+# - size, align and paper layout options
+# - add more logging
+# - windows font find
+# - JSON configuration
+
 OSNAME = platform.system()
 CWD = os.getcwd()
 HOMEDIR = os.path.expanduser('~')
@@ -27,6 +34,7 @@ FONT_EXTS = [".ttf", ".otf"]
 GRID_DIRNAME = os.path.join(MODULEDIR, "grids")
 
 CONST_SIZE_UNIT = "mm"
+BOX_VALIGN_OFFSET = -0.6 # characters don't seem to be vertically centered so add offset for now - seems to differ b/t fonts so add as option?
 
 DEFAULT_NCHAR = 0
 DEFAULT_NBOX = 0
@@ -41,6 +49,8 @@ DEFAULT_PAPERSIZE = "letter"
 DEFAULT_ORIENTATION = "portrait"
 DEFAULT_INTERCHAR_VSPACE = 4 # mm
 DEFAULT_GRID_IMG = "mi-grid.png"
+DEFAULT_CHARPAD = 2 # mm
+DEFAULT_BOXSPACE = 1 # mm
 
 LOGFORMAT = "%(asctime)s [%(levelname)s] %(message)s"
 
@@ -185,11 +195,17 @@ class ccgen_pdf(FPDF):
         x = self.get_x()
         y = self.get_y()
 
-        self.image(x=x, y=y, w=box_size, h=box_size, name=os.path.join(GRID_DIRNAME, DEFAULT_GRID_IMG))
+        self.image(
+            x=x + DEFAULT_BOXSPACE / 2,
+            y=y + DEFAULT_BOXSPACE / 2 + BOX_VALIGN_OFFSET,
+            w=box_size - DEFAULT_BOXSPACE,
+            h=box_size - DEFAULT_BOXSPACE,
+            name=os.path.join(GRID_DIRNAME, DEFAULT_GRID_IMG)
+        )
         
         self.set_xy(x, y)
 
-        self.cell(w=box_size, h=box_size, text=c, border=1, align='C')
+        self.cell(w=box_size, h=box_size, text=c, border=0, align='C')
     
 
     def write_output(self):
@@ -216,16 +232,14 @@ class ccgen_pdf(FPDF):
             if pn == 1:
                 self.add_name_date()
 
-            box_size = util.pt_to_mm(self.config.font_size)
+            box_size = util.pt_to_mm(self.config.font_size) + 2 * DEFAULT_CHARPAD
             content_width = self.w - self.l_margin - self.r_margin
             content_height = self.h - self.get_y() - self.b_margin
             max_x = self.w - self.r_margin
             max_y = self.h - self.b_margin
-            max_per_line = int(content_width // box_size)
 
             max_k = self.config.nchar + self.config.nbox
-            if self.config.round:
-                max_k = util.round_up(max_k, max_per_line)
+            
             # max_per_line = int(content_width // box_size)
             # max_lines = int(content_height // box_size)
             # max_boxes_per_line = int(content_width // box_size)
@@ -244,6 +258,10 @@ class ccgen_pdf(FPDF):
                     # update i, k
                     k += 1
                     if k >= max_k:
+                        # if round, add boxes until line is filled
+                        if self.config.round and self.get_x() + box_size < max_x:
+                            continue
+
                         self.ln(DEFAULT_INTERCHAR_VSPACE)
                         i += 1
                         k = 0
@@ -298,7 +316,7 @@ def config_from_args(args) -> run_config:
     config = run_config()
     config.font_name = args.font
     config.title = args.title
-    config.chars = args.chars
+    config.chars = [c for c in args.chars]
     if args.output:
         config.output_path = args.output
     elif args.title:
@@ -317,7 +335,7 @@ def main(argv: 'list[str]') -> int:
     parser.add_argument("-l", "--log", help="set log level", default="INFO")
     parser.add_argument("-f", "--font", help="which font to use", default=DEFAULT_FONT)
     parser.add_argument("-t", "--title", help="title of page", default="")
-    parser.add_argument("chars", nargs="+", help="which characters to use")
+    parser.add_argument("chars", help="which characters to use")
     parser.add_argument("--nchar", type=int, help="how many copies per character, 0 is fit page width", default=DEFAULT_NCHAR)
     parser.add_argument("--nbox", type=int, help="how many blank boxes for each character, 0 is fit page width", default=DEFAULT_NBOX)
     parser.add_argument("--no-round", action="store_true", help="don't round up nbox to fit line", default=False)
