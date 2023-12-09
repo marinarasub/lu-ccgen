@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="255.99998"
+   height="255.99998"
+   viewBox="0 0 67.733328 67.733329"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask29">
+      <path
+         id="path29"
+         style="display:inline;opacity:1;fill:#fbfbfb;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+         d="M -2.7832926,-3.1982545 V 74.803185 H 71.595112 V -3.1982545 Z M 33.897157,33.19539 a 0.72058104,0.80061729 0 0 1 0.720884,0.800467 0.72058104,0.80061729 0 0 1 -0.720884,0.800468 0.72058104,0.80061729 0 0 1 -0.72037,-0.800468 0.72058104,0.80061729 0 0 1 0.72037,-0.800467 z" />
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask30">
+      <path
+         id="path30"
+         style="display:inline;opacity:1;fill:#fbfbfb;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+         d="M -2.7832926,-3.1982545 V 74.803185 H 71.595112 V -3.1982545 Z M 33.897157,33.19539 a 0.72058104,0.80061729 0 0 1 0.720884,0.800467 0.72058104,0.80061729 0 0 1 -0.720884,0.800468 0.72058104,0.80061729 0 0 1 -0.72037,-0.800468 0.72058104,0.80061729 0 0 1 0.72037,-0.800467 z" />
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask31">
+      <path
+         id="path31"
+         style="display:inline;opacity:1;fill:#fbfbfb;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+         d="M -2.7832926,-3.1982545 V 74.803185 H 71.595112 V -3.1982545 Z M 33.897157,33.19539 a 0.72058104,0.80061729 0 0 1 0.720884,0.800467 0.72058104,0.80061729 0 0 1 -0.720884,0.800468 0.72058104,0.80061729 0 0 1 -0.72037,-0.800468 0.72058104,0.80061729 0 0 1 0.72037,-0.800467 z" />
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask32">
+      <path
+         id="path32"
+         style="display:inline;opacity:1;fill:#fbfbfb;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+         d="M -2.7832926,-3.1982545 V 74.803185 H 71.595112 V -3.1982545 Z M 33.897157,33.19539 a 0.72058104,0.80061729 0 0 1 0.720884,0.800467 0.72058104,0.80061729 0 0 1 -0.720884,0.800468 0.72058104,0.80061729 0 0 1 -0.72037,-0.800468 0.72058104,0.80061729 0 0 1 0.72037,-0.800467 z" />
+    </mask>
+  </defs>
+  <g
+     id="layer3">
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:0;stroke:#3f3f3f;stroke-width:0.424018;stroke-linecap:round;stroke-dasharray:0.0848036, 1.27205;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 67.408556,67.408563 0.05038508,0.05038504"
+       id="path1"
+       mask="url(#mask32)"
+       transform="translate(0.05029524,0.12578617)" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#3f3f3f;stroke-width:0.424018;stroke-linecap:round;stroke-dasharray:0.0848036, 1.27205;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 0.1875788,67.545751 67.545757,0.18757882"
+       id="path1-9"
+       mask="url(#mask31)" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:0;stroke:#3f3f3f;stroke-width:0.426452;stroke-linecap:round;stroke-dasharray:0.0852903, 1.27935;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 0,33.868882 H 67.733333"
+       id="path2"
+       mask="url(#mask30)"
+       transform="translate(-0.36479734)" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#3f3f3f;stroke-width:0.426508;stroke-linecap:round;stroke-dasharray:0.0853017, 1.27952;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 33.868916,0 V 67.733334"
+       id="path2-5"
+       mask="url(#mask29)"
+       transform="translate(0,-0.17617757)" />
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.572924;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="67.160408"
+       height="67.160408"
+       x="0.28646204"
+       y="0.28646204" />
+  </g>
+</svg>
